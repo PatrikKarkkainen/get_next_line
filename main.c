@@ -4,22 +4,14 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-void	print(char **str)
-{
-	printf("%s\n", *str);
-	free(*str);
-	*str = NULL;
-}
-
-int	main()
+int	main(int argc, char **argv)
 {
 	int	fd;
 	char	*result;
 
-	fd = 0;
-	result = NULL;
+	(void)argc;
+	fd = open(argv[1], O_RDONLY);	
 	get_next_line(fd, &result);
-	print(&result);
-	close(fd);
+//	printf("Main: %s\n", result);
 	return (0);
 }
